@@ -55,3 +55,12 @@ class _PanelPageState extends State<PanelPage> {
     );
   }
 }
+
+class PanelBody extends StatelessWidget {
+  const PanelBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

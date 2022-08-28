@@ -6,11 +6,11 @@ part 'panel_state.dart';
 
 class PanelBloc extends Bloc<PanelEvent, PanelState> {
   PanelBloc() : super(const PanelState()) {
-    on<PanelEventSetDescription>(_onPanelEventSetDescription);
+    on<ChangeDescription>(_onChangeDescription);
   }
 
-  Future<void> _onPanelEventSetDescription(
-    PanelEventSetDescription event,
+  Future<void> _onChangeDescription(
+    ChangeDescription event,
     Emitter<PanelState> emit,
   ) async {
     emit(state.copyWith(description: event.description));

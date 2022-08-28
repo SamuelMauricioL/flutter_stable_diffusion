@@ -7,8 +7,8 @@ abstract class PanelEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PanelEventSetDescription extends PanelEvent {
-  const PanelEventSetDescription(this.description);
+class ChangeDescription extends PanelEvent {
+  const ChangeDescription(this.description);
 
   final String description;
 
