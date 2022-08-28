@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_stable_diffusion/l10n/l10n.dart';
-import 'package:flutter_stable_diffusion/panel/presentation/view/panel_page.dart';
+import 'package:flutter_stable_diffusion/panel/presentation/panel.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
