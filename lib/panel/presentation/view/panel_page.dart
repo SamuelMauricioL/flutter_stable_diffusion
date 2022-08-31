@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stable_diffusion/panel/presentation/bloc/panel_bloc.dart';
 
 class PanelPage extends StatefulWidget {
   const PanelPage({super.key});
@@ -8,6 +10,31 @@ class PanelPage extends StatefulWidget {
 }
 
 class _PanelPageState extends State<PanelPage> {
+  final _dreamController = TextEditingController();
+
+  @override
+  void dispose() {
+    _dreamController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => PanelBloc(),
+      child: const PanelBody(),
+    );
+  }
+}
+
+class PanelBody extends StatefulWidget {
+  const PanelBody({super.key});
+
+  @override
+  State<PanelBody> createState() => _PanelBodyState();
+}
+
+class _PanelBodyState extends State<PanelBody> {
   final _dreamController = TextEditingController();
 
   @override
@@ -53,14 +80,5 @@ class _PanelPageState extends State<PanelPage> {
         ),
       ),
     );
-  }
-}
-
-class PanelBody extends StatelessWidget {
-  const PanelBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
