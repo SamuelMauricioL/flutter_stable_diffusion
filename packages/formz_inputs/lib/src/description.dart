@@ -24,7 +24,7 @@ class DescriptionFormInput
   DescriptionValidationError? validator(String value) {
     if (value.isEmpty) return DescriptionValidationError.empty;
 
-    if (value.isEmpty || value.length < 2) {
+    if (value.length < 2) {
       return DescriptionValidationError.tooShort;
     }
     return null;
