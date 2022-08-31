@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stable_diffusion/panel/presentation/bloc/panel_bloc.dart';
+import 'package:formz_inputs/formz_inputs.dart';
 
 class PanelPage extends StatefulWidget {
   const PanelPage({super.key});
@@ -54,16 +55,9 @@ class _PanelBodyState extends State<PanelBody> {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextField(
-                  controller: _dreamController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter a search term',
-                  ),
-                ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: _DescriptionInput(),
               ),
               const SizedBox(height: 80),
               Row(
@@ -79,6 +73,43 @@ class _PanelBodyState extends State<PanelBody> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _DescriptionInput extends StatelessWidget {
+  const _DescriptionInput();
+
+  @override
+  Widget build(BuildContext context) {
+    // final l10n = context.l10n;
+    return BlocSelector<PanelBloc, PanelState, DescriptionFormInput>(
+      selector: (state) => state.description,
+      builder: (context, state) {
+        return TextField(
+          key: const Key('biographyView_biographyInput_textField'),
+          autocorrect: false,
+          onChanged: (description) {
+            context.read<PanelBloc>().add(ChangeDescription(description));
+          },
+          decoration: InputDecoration(
+            // labelText: l10n.biographyInputLabelText,
+            labelText: 'Description',
+            errorText: () {
+              if (state.invalid) {
+                if (state.error == DescriptionValidationError.empty) {
+                  // return l10n.emptyBiographyInputErrorText;
+                  return 'Descripción inválida';
+                } else if (state.error == DescriptionValidationError.tooShort) {
+                  // return l10n.longBiographyInputErrorText;
+                  return 'Descripción muy corta';
+                }
+                return null;
+              }
+            }(),
+          ),
+        );
+      },
     );
   }
 }
