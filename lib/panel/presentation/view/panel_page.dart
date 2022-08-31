@@ -89,7 +89,7 @@ class _DescriptionInput extends StatelessWidget {
       selector: (state) => state.description,
       builder: (context, state) {
         return TextField(
-          key: const Key('biographyView_biographyInput_textField'),
+          key: const Key('PanelView_descriptionInput_textField'),
           autocorrect: false,
           onChanged: (description) {
             context.read<PanelBloc>().add(ChangeDescription(description));
@@ -130,7 +130,7 @@ class _SubmitButton extends StatelessWidget {
         }
 
         return FloatingActionButton.extended(
-          key: const Key('descriptionPage_submitButton_floatingActionButton'),
+          key: const Key('PanelPage_submitButton_floatingActionButton'),
           onPressed: () {
             context.read<PanelBloc>().add(const GetImage());
           },
