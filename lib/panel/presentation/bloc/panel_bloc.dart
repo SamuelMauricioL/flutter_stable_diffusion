@@ -18,6 +18,7 @@ class PanelBloc extends Bloc<PanelEvent, PanelState> {
     emit(
       state.copyWith(
         description: description,
+        descriptionStatus: Formz.validate([description]),
       ),
     );
   }

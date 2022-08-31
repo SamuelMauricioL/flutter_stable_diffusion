@@ -15,3 +15,10 @@ class ChangeDescription extends PanelEvent {
   @override
   List<Object> get props => [description];
 }
+
+class GetImage extends PanelEvent {
+  const GetImage();
+
+  @override
+  List<Object> get props => [];
+}

@@ -59,7 +59,9 @@ class _PanelBodyState extends State<PanelBody> {
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: _DescriptionInput(),
               ),
-              const SizedBox(height: 80),
+              const SizedBox(height: 20),
+              const _SubmitButton(),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
@@ -108,6 +110,31 @@ class _DescriptionInput extends StatelessWidget {
               }
             }(),
           ),
+        );
+      },
+    );
+  }
+}
+
+class _SubmitButton extends StatelessWidget {
+  const _SubmitButton();
+
+  @override
+  Widget build(BuildContext context) {
+    // final l10n = context.l10n;
+    return BlocBuilder<PanelBloc, PanelState>(
+      builder: (context, state) {
+        if (state.descriptionStatus.isInvalid ||
+            state.descriptionStatus.isPure) {
+          return const SizedBox.shrink();
+        }
+
+        return FloatingActionButton.extended(
+          key: const Key('pinPage_submitButton_floatingActionButton'),
+          onPressed: () {
+            context.read<PanelBloc>().add(const GetImage());
+          },
+          label: const Text('Generar Imagen'),
         );
       },
     );
