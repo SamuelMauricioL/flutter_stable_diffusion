@@ -8,6 +8,7 @@ part 'panel_state.dart';
 class PanelBloc extends Bloc<PanelEvent, PanelState> {
   PanelBloc() : super(const PanelState()) {
     on<ChangeDescription>(_onChangeDescription);
+    on<GetImage>(_onGetImage);
   }
 
   Future<void> _onChangeDescription(
@@ -21,5 +22,12 @@ class PanelBloc extends Bloc<PanelEvent, PanelState> {
         descriptionStatus: Formz.validate([description]),
       ),
     );
+  }
+
+  Future<void> _onGetImage(
+    GetImage event,
+    Emitter<PanelState> emit,
+  ) async {
+    //TODO(GetImage): IMPLEMENT REPOSITORY TO GET PATH OF IMAGE SAVE IN LOCAL.
   }
 }
