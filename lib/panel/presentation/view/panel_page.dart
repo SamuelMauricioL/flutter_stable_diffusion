@@ -130,7 +130,7 @@ class _SubmitButton extends StatelessWidget {
         }
 
         return FloatingActionButton.extended(
-          key: const Key('pinPage_submitButton_floatingActionButton'),
+          key: const Key('descriptionPage_submitButton_floatingActionButton'),
           onPressed: () {
             context.read<PanelBloc>().add(const GetImage());
           },
