@@ -13,23 +13,27 @@ enum PanelStatus {
 
 class PanelState extends Equatable {
   const PanelState({
-    this.description = '',
     this.status = PanelStatus.initial,
+    this.description = const DescriptionFormInput.pure(),
+    this.descriptionStatus = FormzStatus.pure,
   });
 
-  final String description;
   final PanelStatus status;
+  final DescriptionFormInput description;
+  final FormzStatus descriptionStatus;
 
   @override
-  List<Object> get props => [description, status];
+  List<Object> get props => [description, descriptionStatus, status];
 
   PanelState copyWith({
-    String? description,
     PanelStatus? status,
+    DescriptionFormInput? description,
+    FormzStatus? descriptionStatus,
   }) {
     return PanelState(
-      description: description ?? this.description,
       status: status ?? this.status,
+      description: description ?? this.description,
+      descriptionStatus: descriptionStatus ?? this.descriptionStatus,
     );
   }
 }

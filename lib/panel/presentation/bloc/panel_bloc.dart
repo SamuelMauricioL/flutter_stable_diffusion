@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formz_inputs/formz_inputs.dart';
 
 part 'panel_event.dart';
 part 'panel_state.dart';
@@ -13,6 +14,11 @@ class PanelBloc extends Bloc<PanelEvent, PanelState> {
     ChangeDescription event,
     Emitter<PanelState> emit,
   ) async {
-    emit(state.copyWith(description: event.description));
+    final description = DescriptionFormInput.dirty(event.description);
+    emit(
+      state.copyWith(
+        description: description,
+      ),
+    );
   }
 }
