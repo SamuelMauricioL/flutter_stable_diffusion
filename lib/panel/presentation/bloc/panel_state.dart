@@ -21,7 +21,7 @@ class PanelState extends Equatable {
   final PanelStatus status;
 
   @override
-  List<Object> get props => [description];
+  List<Object> get props => [description, status];
 
   PanelState copyWith({
     String? description,
